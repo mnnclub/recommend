@@ -19,14 +19,23 @@ import org.springframework.context.annotation.Configuration;
 public class RecommendConfig {
     @Value("${ottrecommend.filepath}")
     private String ottRecommendFilepath;
+    @Value("${ottrecommend.authtoken}")
+    private String ottRecommendAuthToken;
 
     private final Logger log = LoggerFactory.getLogger(getClass());
+    private static final String AUTHTOKEN = "P@ssword!";
 
     @Bean
     public BestOTT loadBestOTT() {
         BestOTT bestOTT = new BestOTT();
 
         Map<String, String> datas = new HashMap<>();
+
+        log.info("Auth Token ==> {}", ottRecommendAuthToken);
+        if (!AUTHTOKEN.equals(ottRecommendAuthToken)) {
+            log.error("##### Fail to authenticate !");
+            return bestOTT;
+        }
 
         String filepath = System.getProperty("user.home") + File.separator + ottRecommendFilepath;
         log.info("FILE PATH==>{}", filepath);

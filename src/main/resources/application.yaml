@@ -2,4 +2,6 @@ server.port: ${service_port:3002}
 spring:
   application.name: recommend
 
-ottrecommend.filepath: ${ottrecommend_filepath:data/bestott.properties}
+ottrecommend:
+  filepath: ${ottrecommend_filepath:data/bestott.properties}
+  authtoken: ${ottrecommend_authtoken:P@ssword!}
