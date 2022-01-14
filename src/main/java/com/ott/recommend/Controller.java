@@ -22,4 +22,9 @@ public class Controller {
         log.info("### Sent: {}", msg);
         return msg;
     }
+
+    @GetMapping("hostname")
+    public String getHostname() {
+        return "Hostname=>" + System.getenv("HOSTNAME");
+    }
 }
