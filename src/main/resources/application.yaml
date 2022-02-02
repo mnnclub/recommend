@@ -5,3 +5,7 @@ spring:
 ottrecommend:
   filepath: ${ottrecommend_filepath:data/bestott.properties}
   authtoken: ${ottrecommend_authtoken:P@ssword!}
+
+logging.level:
+  root: INFO
+  org.springframework.web: ERROR  
